@@ -1,0 +1,102 @@
+<template>
+  <view class="container">
+      <panel class="panel-tabs">
+          <view class="hd df jcsb">
+              <view class="i on">可使用</view>
+              <view class="i">已过期</view>
+          </view>
+          <view class="bd">
+            <view class="i">
+                <view class="h">
+                    2017-12-12 12:00
+                </view>
+                <view class="b df jcsb">
+                    <image class="l" mode="aspectFit"  src="http://iph.href.lu/400x300"></image>
+                    <view class="c df jcsb aic fdc">
+                        <view class="u">商品名称</view>
+                        <view class="d">红叶扫码活动</view>
+                    </view>
+                    <view class="r df aic">
+                        <navigator url="./money">
+                            查看详情
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+          </view>
+      </panel>
+  </view>
+</template>
+
+<style lang="less" scoped>
+    .panel-tabs{
+        padding: 20px 30px;
+        .hd{
+            padding: 20px 20%;
+            .i{
+                font-size: 14px;
+                text-align: center;
+                width: 50%;
+                &.on{
+                    color:#f24544;
+                }
+            }
+        }
+        .bd{
+            font-size: 14px;
+            .i{
+                &.show{
+                    display: block;
+                }
+                &.hide{
+                    display: none;
+                }
+                margin:10px;
+                .h{
+                    padding:5px;
+                    border-bottom:1px solid #ccc;
+                }
+                .b{
+                    padding-top: 10px;
+                    padding-bottom:10px;
+                    .l{
+                        width:80px;
+                        height:60px;
+                    }
+                    .r{
+                        color: #3388ff;
+                    }
+                }
+            }
+        }
+
+    }
+</style>
+
+
+<script>
+import wepy from 'wepy'
+
+export default class PageUserDraw extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的奖品'
+  }
+
+  data = {
+    userInfo: {
+      nickName: 'loading...'
+    }
+  }
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {
+    this.$parent.getUserInfo().then(user => {
+      this.userInfo = user
+      this.$apply()
+    })
+  }
+}
+</script>

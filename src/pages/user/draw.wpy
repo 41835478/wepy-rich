@@ -1,0 +1,70 @@
+<template>
+  <view class="container">
+      <panel class="panel-draw">
+          <view class="hd">￥40.01</view>
+          <view class="bd">
+              最高提10元
+          </view>
+          <view class="ft">
+              <view class="h">
+                  <input type="text" placeholder="请输入金额" class="zan-field">
+              </view>
+              <view class="b">
+                  <view class="zan-btn zan-btn--danger">提现至微信钱包</view>
+              </view>
+          </view>
+      </panel>
+  </view>
+</template>
+
+<style lang="less" scoped>
+    .panel-draw{
+        text-align: center;
+        padding: 20px 30px;
+        .hd{
+            padding: 20px 20%;
+        }
+        .bd{
+            margin:10px;
+            color:red;
+            font-size:14px;
+        }
+        .ft{
+            .h{
+                margin:30px 10px;
+            }
+            .b{
+                margin:10px;
+            }
+        }
+
+    }
+</style>
+
+
+<script>
+import wepy from 'wepy'
+
+export default class PageUserDraw extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的零钱'
+  }
+
+  data = {
+    userInfo: {
+      nickName: 'loading...'
+    }
+  }
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {
+    this.$parent.getUserInfo().then(user => {
+      this.userInfo = user
+      this.$apply()
+    })
+  }
+}
+</script>

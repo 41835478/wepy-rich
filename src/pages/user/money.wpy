@@ -1,0 +1,99 @@
+<template>
+  <view class="container">
+      <panel class="panel-draw">
+          <view class="hd">￥40.01</view>
+          <view class="bd">
+              <navigator  url="./draw">
+                  <button type="button" class="zan-btn zan-btn--danger">
+                      立即提现
+                  </button>
+              </navigator>
+          </view>
+      </panel>
+      <panel class="panel-lists">
+          <view class="hd">收支明细（本月）</view>
+          <view class="bd">
+              <view class="i">
+                  <view class="h">活动名称</view>
+                  <view class="b df jcsb">
+                      <view class="l">今天12:00</view>
+                      <view class="r">+2</view>
+                  </view>
+              </view>
+              <view class="i">
+                  <view class="h">活动名称</view>
+                  <view class="b df jcsb">
+                      <view class="l">今天12:00</view>
+                      <view class="r">+2</view>
+                  </view>
+              </view>
+              <view class="i">
+                  <view class="h">活动名称</view>
+                  <view class="b df jcsb">
+                      <view class="l">今天12:00</view>
+                      <view class="r">+2</view>
+                  </view>
+              </view>
+          </view>
+      </panel>
+  </view>
+</template>
+
+<style lang="less" scoped>
+    .panel-draw{
+        text-align: center;
+        padding: 20px 30px;
+        .hd{
+            padding: 20px 20%;
+        }
+        .bd{
+            margin:10px;
+        }
+
+    }
+    .panel-lists{
+        .hd{
+            font-size:16px;
+            padding:10px;
+        }
+        .bd{
+            .i{
+                font-size:14px;
+                .h{
+                    margin:10px;
+                }
+                .b{
+                    margin:10px;
+                }
+            }
+        }
+    }
+</style>
+
+
+<script>
+import wepy from 'wepy'
+
+export default class PageUserMoney extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的零钱'
+  }
+
+  data = {
+    userInfo: {
+      nickName: 'loading...'
+    }
+  }
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {
+    this.$parent.getUserInfo().then(user => {
+      this.userInfo = user
+      this.$apply()
+    })
+  }
+}
+</script>
